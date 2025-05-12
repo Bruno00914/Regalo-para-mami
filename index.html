@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mamá</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: float 4s ease-in-out infinite;
+            opacity: 0;
+            color: #ff6b81;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .spotify-card {
+            transition: all 0.3s ease;
+        }
+        
+        .spotify-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .message-box {
+            background: linear-gradient(135deg, #f9f9ff 0%, #f0f4ff 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 105, 140, 0.3);
+        }
+        
+        .album-cover {
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        
+        .album-cover:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-50 to-purple-100 min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-2xl w-full">
+        <div class="message-box p-8 mb-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-pink-600 mb-6">¡Te amo mucho, mamá!</h1>
+            <p class="text-lg md:text-xl text-gray-700 mb-6">
+                Estoy muy agradecido por todo lo que he aprendido contigo, tanto en los momentos buenos como en los difíciles. A pesar de todos mis errores, tú siempre estuviste ahí para apoyarme sin soltarme.  
+                Te admiro profundamente por lo fuerte que eres, por todo lo que has superado y por el esfuerzo que haces cada día.  
+                Te amo mucho, y no tengo duda de que eres una gran madre.
+            </p>
+            <p class="text-lg md:text-xl text-gray-700 mb-6">
+                Como leí una vez:  
+                <i>“Madre, tu voz es la música que me impulsa,  
+                cuando todo parece perdido, tu fe me resulta.”</i><br>  
+                Porque cuando todo parecía perdido, en momentos de angustia, gracias a ti encontré la salida a la oscuridad… y pude brillar más que nunca.
+            </p>
+            <p class="text-lg md:text-xl text-gray-700 mb-6">
+                Con todo mi amor,  
+                Bruno.
+            </p>
+        </div>
+
+        <p class="text-center text-xl font-semibold text-gray-800 mb-6">Te dedico esta canción :]</p>
+        
+        <div class="spotify-card bg-white rounded-xl p-6 shadow-lg">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fab fa-spotify text-green-500 mr-2"></i> Una canción especial para ti
+            </h2>
+            
+            <div class="flex flex-col md:flex-row items-center mb-6">
+                <div class="md:mr-6 mb-4 md:mb-0">
+                    <img src="https://www.lahiguera.net/musicalia/artistas/eladio_carrion/disco/13286/eladio_carrion_sol_maria-portada.jpg" 
+                         alt="Portada del álbum" 
+                         class="album-cover w-48 h-48 rounded-lg object-cover">
+                </div>
+                <div class="flex-1 w-full">
+                    <h3 class="text-xl font-semibold text-gray-800">Mama's Boy</h3>
+                    <p class="text-gray-600 mb-2">Eladio Carrión</p>
+                    <a href="https://open.spotify.com/track/6s0WTmorTss8VsEzsHApKt?si=G4jsLSjwQnOvx5PEWM0MyQ" 
+                       target="_blank" 
+                       class="inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition">
+                        <i class="fab fa-spotify mr-2"></i> Escuchar en Spotify
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Floating hearts animation when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const colors = ['#ff6b81', '#ff8e8e', '#ffb3b3', '#ffd8d8', '#ff9ff3'];
+            
+            function createHeart() {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '<i class="fas fa-heart"></i>';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = (window.innerHeight + 20) + 'px';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                
+                document.body.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+            
+            // Create hearts on load
+            for (let i = 0; i < 15; i++) {
+                setTimeout(createHeart, i * 300);
+            }
+            
+            // Create hearts periodically
+            setInterval(() => {
+                for (let i = 0; i < 5; i++) {
+                    createHeart();
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
